@@ -1,0 +1,488 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.container {
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #1e1b4b, #1e3a8a, #0f172a);
+    overflow: hidden;
+}
+
+/* Stars Background */
+.stars-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: twinkle 2s ease-in-out infinite;
+}
+
+/* Shooting Stars */
+.shooting-stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.shooting-star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: linear-gradient(45deg, #fff, #87ceeb);
+    border-radius: 50%;
+    box-shadow: 0 0 6px #87ceeb;
+}
+
+.shooting-star::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 30px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #87ceeb);
+    transform: translateY(-50%);
+}
+
+.shooting-star-1 {
+    top: 10%;
+    animation: shooting-star 6s linear infinite;
+    animation-delay: 0s;
+}
+
+.shooting-star-2 {
+    top: 30%;
+    animation: shooting-star 8s linear infinite;
+    animation-delay: 2s;
+}
+
+.shooting-star-3 {
+    top: 60%;
+    animation: shooting-star 7s linear infinite;
+    animation-delay: 4s;
+}
+
+/* Galaxy Overlay */
+.galaxy-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(147, 51, 234, 0.2) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* Opening Screen */
+.opening-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #1e1b4b, #1e3a8a, #0f172a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    transition: opacity 1s ease-out;
+}
+
+.opening-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.opening-content {
+    text-align: center;
+    animation: zoom-in 2s ease-out;
+}
+
+.opening-title {
+    font-size: clamp(2rem, 8vw, 5rem);
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+    animation: zoom-in 2s ease-out;
+}
+
+.opening-icons {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* Main Content */
+.main-content {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+
+.main-content.visible {
+    opacity: 1;
+}
+
+.content-wrapper {
+    position: relative;
+    max-width: 64rem;
+    width: 100%;
+    text-align: center;
+}
+
+/* Glassmorphism Card */
+.glass-card {
+    backdrop-filter: blur(16px);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: fade-in-up 1s ease-out forwards;
+}
+
+/* Title Section */
+.title-section {
+    margin-bottom: 2rem;
+    animation: fade-in-up 1s ease-out forwards;
+}
+
+.main-title {
+    font-size: clamp(1.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+    animation: glow 3s ease-in-out infinite;
+}
+
+.title-stars {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Message Section */
+.message-section {
+    margin-bottom: 2rem;
+    animation: fade-in-up 1s ease-out forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+}
+
+.message-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: clamp(0.875rem, 2.5vw, 1.125rem);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.final-message {
+    font-weight: 500;
+}
+
+/* Button Section */
+.button-section {
+    animation: fade-in-up 1s ease-out forwards;
+    animation-delay: 1s;
+    opacity: 0;
+}
+
+.birthday-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(to right, #ec4899, #8b5cf6);
+    color: white;
+    font-weight: 600;
+    font-size: 1.125rem;
+    border: none;
+    border-radius: 9999px;
+    box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.birthday-button:hover {
+    background: linear-gradient(to right, #db2777, #7c3aed);
+    box-shadow: 0 20px 40px -6px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+.birthday-button.playing {
+    animation: pulse 1s ease-in-out infinite;
+}
+
+.birthday-button.playing .button-heart {
+    animation: bounce 1s ease-in-out infinite;
+}
+
+.birthday-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, #f472b6, #a855f7);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: inherit;
+}
+
+.birthday-button:hover::before {
+    opacity: 0.2;
+}
+
+.button-heart,
+.button-text {
+    position: relative;
+    z-index: 1;
+}
+
+/* Floating Hearts */
+.floating-heart {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0.7;
+    animation: float 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.floating-heart-1 {
+    top: -1rem;
+    left: -1rem;
+    color: #f472b6;
+}
+
+.floating-heart-2 {
+    top: -2rem;
+    right: -2rem;
+    color: #fbbf24;
+    animation-delay: 1s;
+}
+
+.floating-heart-3 {
+    bottom: -1.5rem;
+    left: -2rem;
+    color: #ec4899;
+    animation-delay: 2s;
+}
+
+/* Icons */
+.star-icon {
+    font-size: 1.5rem;
+    display: inline-block;
+}
+
+.heart-icon {
+    font-size: 1.5rem;
+    display: inline-block;
+}
+
+/* Animations */
+@keyframes zoom-in {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fade-in-up {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(147, 197, 253, 0.3);
+    }
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+@keyframes animate-spin-slow {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(0deg);
+    }
+    75% {
+        transform: translateY(-10px) rotate(-5deg);
+    }
+}
+
+@keyframes shooting-star {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px) translateY(0);
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(calc(100vw + 100px)) translateY(-200px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Animation Classes */
+.animate-twinkle {
+    animation: twinkle 2s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+    animation: animate-spin-slow 3s linear infinite;
+}
+
+.animate-pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .glass-card {
+        padding: 1.5rem;
+        margin: 0.5rem;
+    }
+    
+    .shooting-star::before {
+        width: 20px;
+    }
+    
+    .floating-heart {
+        font-size: 1.25rem;
+    }
+    
+    .birthday-button {
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .glass-card {
+        padding: 1rem;
+    }
+    
+    .message-text {
+        font-size: 0.875rem;
+    }
+    
+    .birthday-button {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.875rem;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(147, 197, 253, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(147, 197, 253, 0.5);
+}
